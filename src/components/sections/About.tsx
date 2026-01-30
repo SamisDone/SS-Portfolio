@@ -119,8 +119,7 @@ export function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                onClick={() => block.href && window.open(block.href, '_blank')}
-                className={`p-6 border rounded-sm bg-card/50 backdrop-blur-sm transition-all duration-300 interactive-card ${getAccentColor(block.accent)} ${block.href ? 'cursor-pointer' : ''}`}
+                className={`p-6 border rounded-sm bg-card/50 backdrop-blur-sm transition-all duration-300 interactive-card ${getAccentColor(block.accent)}`}
               >
                 <block.icon className={`w-8 h-8 mb-4 ${getAccentColor(block.accent).split(' ')[0]}`} />
                 <h3 className="font-semibold text-lg mb-2">{block.title}</h3>
