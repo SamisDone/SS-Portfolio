@@ -16,7 +16,7 @@ export function Contact() {
   const y = useTransform(scrollYProgress, [0, 1], [50, -50])
 
   return (
-    <section id="contact" className="py-32 px-6 relative overflow-hidden" ref={ref}>
+    <section id="contact" className="py-24 px-6 relative overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-4xl mx-auto text-center relative z-10">
         {/* Availability Badge */}
         <motion.div

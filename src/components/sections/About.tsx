@@ -51,7 +51,7 @@ export function About() {
   const y = useTransform(scrollYProgress, [0, 1], [50, -50])
 
   return (
-    <section id="about" className="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden" ref={ref}>
+    <section id="about" className="py-12 md:py-24 px-4 md:px-6 relative overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
         <SectionHeader 
           number="01" 
@@ -80,7 +80,7 @@ export function About() {
             </p>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-1 gap-4 pt-6">
+            <div className="grid grid-cols-2 gap-4 pt-6">
               <a 
                 href="https://www.freecodecamp.org/samonwita_tanu" 
                 target="_blank" 
@@ -90,6 +90,10 @@ export function About() {
                 <div className="text-3xl font-bold text-acid font-mono group-hover:scale-110 transition-transform">300+</div>
                 <div className="text-sm text-muted-foreground">Problems Solved</div>
               </a>
+              <div className="p-4 border border-border rounded-sm bg-card hover:border-violet transition-colors group">
+                <div className="text-3xl font-bold text-violet font-mono group-hover:scale-110 transition-transform">10+</div>
+                <div className="text-sm text-muted-foreground">Finished Projects</div>
+              </div>
             </div>
 
             {/* Certifications Link */}

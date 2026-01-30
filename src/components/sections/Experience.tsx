@@ -55,6 +55,7 @@ const certifications = [
   { name: 'Data Science & Python Portfolio', issuer: 'DataCamp' },
   { name: 'Full Stack Development Profile', issuer: 'freeCodeCamp' },
   { name: 'MatrixMUN Credential', issuer: 'Credsverse' },
+  { name: 'Responsive Web Design', issuer: 'freeCodeCamp' },
 ]
 
 const getAccentText = (accent: string) => {
@@ -87,7 +88,7 @@ export function Experience() {
   const y = useTransform(scrollYProgress, [0, 1], [70, -70])
 
   return (
-    <section id="experience" className="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden" ref={ref}>
+    <section id="experience" className="py-12 md:py-24 px-4 md:px-6 relative overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
         <SectionHeader 
           number="04" 
