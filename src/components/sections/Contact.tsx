@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { Mail, Github, Linkedin, Terminal, Database, ArrowUpRight } from 'lucide-react'
 
 const socialLinks = [
+  { icon: Mail, href: 'https://mail.google.com/mail/?view=cm&fs=1&to=sarker.samonwita@gmail.com', label: 'Email', username: 'sarker.samonwita' },
   { icon: Github, href: 'https://github.com/SamisDone', label: 'GitHub', username: '@SamisDone' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/samonwita-sarker-a87737262/', label: 'LinkedIn', username: 'samonwita-sarker' },
   { icon: Terminal, href: 'https://codeforces.com/profile/jinxed_sam', label: 'Codeforces', username: 'jinxed_sam' },
@@ -62,7 +63,9 @@ export function Contact() {
           className="mb-24"
         >
           <motion.a
-            href="mailto:sarker.samonwita@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=sarker.samonwita@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="group relative inline-flex items-center gap-3 px-10 py-5 bg-primary text-primary-foreground font-bold rounded-sm overflow-hidden"
@@ -79,7 +82,7 @@ export function Contact() {
             Digital Footprint
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 mt-8">
             {socialLinks.map((link, index) => (
               <motion.a
                 key={link.label}
