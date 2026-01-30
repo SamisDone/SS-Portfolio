@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Terminal, Database } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Terminal, Database, Mail } from 'lucide-react'
 
 const socialLinks = [
+  { icon: Mail, href: 'https://mail.google.com/mail/?view=cm&fs=1&to=sarker.samonwita@gmail.com', label: 'Email' },
   { icon: Github, href: 'https://github.com/SamisDone', label: 'GitHub' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/samonwita-sarker-a87737262/', label: 'LinkedIn' },
   { icon: Terminal, href: 'https://codeforces.com/profile/jinxed_sam', label: 'Codeforces' },

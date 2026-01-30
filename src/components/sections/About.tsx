@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Code, Cpu, Layers, Zap, Brain } from 'lucide-react'
+import { Code, Cpu, Layers, Zap, Brain, Mail } from 'lucide-react'
 
 const identityBlocks = [
   {
@@ -26,6 +26,13 @@ const identityBlocks = [
     title: 'Competitive Programmer',
     description: 'Solving complex algorithmic challenges. Data structures are my playground.',
     accent: 'acid',
+  },
+  {
+    icon: Mail,
+    title: 'Collaborator',
+    description: "Always open for professional collaboration and technical discussions. Let's connect!",
+    accent: 'violet',
+    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=sarker.samonwita@gmail.com'
   },
 ]
 
@@ -118,14 +125,15 @@ export function About() {
           </motion.div>
 
           {/* Identity Blocks */}
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {identityBlocks.map((block, index) => (
               <motion.div
                 key={block.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className={`p-6 border rounded-sm bg-card/50 backdrop-blur-sm transition-all duration-300 interactive-card ${getAccentColor(block.accent)}`}
+                onClick={() => block.href && window.open(block.href, '_blank')}
+                className={`p-6 border rounded-sm bg-card/50 backdrop-blur-sm transition-all duration-300 interactive-card ${getAccentColor(block.accent)} ${block.href ? 'cursor-pointer' : ''}`}
               >
                 <block.icon className={`w-8 h-8 mb-4 ${getAccentColor(block.accent).split(' ')[0]}`} />
                 <h3 className="font-semibold text-lg mb-2">{block.title}</h3>
