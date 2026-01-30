@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
   linkedin: 'https://www.linkedin.com/in/samonwita-sarker-a87737262/',
   codeforces: 'https://codeforces.com/profile/jinxed_sam',
   kaggle: 'https://www.kaggle.com/samonwitasarker',
-  location: 'Chattogram, BD',
+  location: 'Bangladesh',
 }
 
 export const GMAIL_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${PERSONAL_INFO.email}`
