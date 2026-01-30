@@ -8,7 +8,7 @@ const education = [
     degree: 'B.Sc. in Computer Science & Engineering',
     institution: 'Chittagong University of Engineering and Technology (CUET)',
     period: '2023 – Present',
-    details: 'CGPA: 3.58',
+    details: '',
   },
   {
     degree: 'Higher Secondary Certificate (HSC)',
@@ -131,9 +131,11 @@ export function Experience() {
                   <span className="font-mono text-[10px] text-primary uppercase tracking-widest">{edu.period}</span>
                   <h4 className="text-lg font-bold mt-1 group-hover:text-primary transition-colors">{edu.degree}</h4>
                   <p className="text-muted-foreground">{edu.institution}</p>
-                  <div className="mt-2 inline-block px-2 py-0.5 bg-acid/10 border border-acid/20 rounded-sm text-xs font-mono text-acid">
-                    {edu.details}
-                  </div>
+                  {edu.details && (
+                    <div className="mt-2 inline-block px-2 py-0.5 bg-acid/10 border border-acid/20 rounded-sm text-xs font-mono text-acid">
+                      {edu.details}
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>

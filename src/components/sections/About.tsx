@@ -81,11 +81,7 @@ export function About() {
             </p>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-4 pt-6">
-              <div className="p-4 border border-border rounded-sm bg-card hover:border-primary transition-colors group">
-                <div className="text-3xl font-bold text-primary font-mono group-hover:scale-110 transition-transform">3.58</div>
-                <div className="text-sm text-muted-foreground">CGPA @ CUET</div>
-              </div>
+            <div className="grid grid-cols-1 gap-4 pt-6">
               <a 
                 href="https://www.freecodecamp.org/samonwita_tanu" 
                 target="_blank" 
