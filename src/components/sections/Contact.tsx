@@ -76,8 +76,8 @@ export function Contact() {
             Digital Footprint
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 mt-8">
-            {SOCIAL_LINKS.map((link, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+            {SOCIAL_LINKS.filter(link => link.label !== 'Email').map((link, index) => (
               <motion.a
                 key={link.label}
                 href={link.href}

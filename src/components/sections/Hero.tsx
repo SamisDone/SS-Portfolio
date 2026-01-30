@@ -69,31 +69,7 @@ export function Hero() {
           <span className="text-foreground">Full-stack developer</span>, <span className="text-foreground">ML enthusiast</span> & <span className="text-foreground">competitive programmer</span> crafting digital experiences with precision.
         </motion.p>
 
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex items-center justify-center gap-6 mb-16"
-        >
-          {SOCIAL_LINKS.map((link, index) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 + index * 0.1 }}
-              className="p-3 rounded-lg border border-border bg-card hover:border-primary hover:text-primary transition-colors group"
-              title={link.label}
-            >
-              <link.icon className="w-5 h-5" />
-            </motion.a>
-          ))}
-        </motion.div>
+
 
         {/* CTA */}
         <motion.div

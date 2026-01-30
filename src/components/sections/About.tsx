@@ -29,13 +29,6 @@ const identityBlocks = [
     description: 'Solving complex algorithmic challenges. Data structures are my playground.',
     accent: 'acid',
   },
-  {
-    icon: Brain,
-    title: 'Collaborator',
-    description: "Always open for professional collaboration and technical discussions. Let's connect!",
-    accent: 'violet',
-    href: GMAIL_URL
-  },
 ]
 
 const getAccentColor = (accent: string) => {
@@ -119,7 +112,7 @@ export function About() {
           </motion.div>
 
           {/* Identity Blocks */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4">
             {identityBlocks.map((block, index) => (
               <motion.div
                 key={block.title}
