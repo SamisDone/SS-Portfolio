@@ -80,7 +80,7 @@ const projects: Project[] = [
     live: 'https://glitch-breach-sam.netlify.app/',
     accent: 'violet',
     featured: true,
-    animation: 'reveal',
+    animation: 'elevate',
   },
   {
     title: 'Hangman',
@@ -116,14 +116,14 @@ const projects: Project[] = [
 
 export function Projects() {
   const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
   
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start']
   })
   
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50])
 
   return (
     <section id="projects" className="py-16 md:py-32 px-4 md:px-6 relative" ref={ref}>

@@ -15,7 +15,7 @@ const getAccentStyles = (accent: string) => {
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const isCardInView = useInView(cardRef, { once: true, margin: '-100px' })
+  const isCardInView = useInView(cardRef, { once: true, margin: '-50px' })
   
   const styles = getAccentStyles(project.accent)
 
@@ -75,7 +75,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       initial="hidden"
       animate={isCardInView ? "visible" : "hidden"}
       variants={cardVariants}
-      className={`relative grid md:grid-cols-3 gap-6 md:gap-8 p-4 sm:p-6 md:p-8 border ${styles.border} ${styles.bg} backdrop-blur-sm rounded-sm overflow-hidden project-card mb-8 md:mb-12 group`}
+      className={`relative grid md:grid-cols-3 gap-6 md:gap-8 p-4 sm:p-6 md:p-8 border ${styles.border} ${styles.bg} backdrop-blur-sm rounded-sm overflow-hidden project-card group`}
     >
       {/* Interactive Scanline Overlay (Only visible on hover) */}
       <motion.div 
