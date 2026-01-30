@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { PERSONAL_INFO } from '@/lib/constants'
 
 export function Footer() {
   return (
@@ -11,7 +12,7 @@ export function Footer() {
             transition={{ delay: 0.2 }}
             className="font-mono text-sm text-muted-foreground"
           >
-            Designed & Built by <span className="text-primary">Samonwita Sarker</span>
+            Designed & Built by <span className="text-primary">{PERSONAL_INFO.name}</span>
           </motion.p>
 
           <motion.div

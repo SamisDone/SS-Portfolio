@@ -3,6 +3,8 @@ import { useRef } from 'react'
 import { Github } from 'lucide-react'
 import { ProjectCard } from '@/components/projects/ProjectCard'
 import { Project } from '@/types/project'
+import { SectionHeader } from '../ui/SectionHeader'
+import { PERSONAL_INFO } from '@/lib/constants'
 
 const projects: Project[] = [
   {
@@ -126,24 +128,13 @@ export function Projects() {
   return (
     <section id="projects" className="py-32 px-6 relative" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-20"
-        >
-          <div className="flex items-end justify-between mb-4">
-            <h2 className="text-3xl md:text-5xl font-bold">
-              <span className="text-primary font-mono text-xl md:text-2xl mr-2">02.</span>
-              Selected Work
-            </h2>
-            <div className="hidden md:block font-mono text-xs text-muted-foreground tracking-tighter uppercase">
-              // SCROLL_TO_DISCOVER_EXPERIMENTS
-            </div>
-          </div>
-          <div className="section-divider w-48 md:w-96" />
-        </motion.div>
+        <SectionHeader 
+          number="02" 
+          title="Selected Work" 
+          subtitle="SCROLL_TO_DISCOVER_EXPERIMENTS"
+          dividerWidth="w-48 md:w-96"
+          isInView={isInView}
+        />
 
         {/* Projects Grid */}
         <div className="space-y-32">
@@ -160,7 +151,7 @@ export function Projects() {
           className="mt-12 text-center"
         >
           <a
-            href="https://github.com/SamisDone"
+            href={PERSONAL_INFO.github}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-mono text-sm"

@@ -1,6 +1,8 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Code, Cpu, Layers, Zap, Brain, Mail } from 'lucide-react'
+import { Code, Cpu, Layers, Brain } from 'lucide-react'
+import { SectionHeader } from '../ui/SectionHeader'
+import { GMAIL_URL } from '@/lib/constants'
 
 const identityBlocks = [
   {
@@ -28,11 +30,11 @@ const identityBlocks = [
     accent: 'acid',
   },
   {
-    icon: Mail,
+    icon: Brain,
     title: 'Collaborator',
     description: "Always open for professional collaboration and technical discussions. Let's connect!",
     accent: 'violet',
-    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=sarker.samonwita@gmail.com'
+    href: GMAIL_URL
   },
 ]
 
@@ -58,19 +60,11 @@ export function About() {
   return (
     <section id="about" className="py-32 px-6 relative overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            <span className="text-primary font-mono text-xl md:text-2xl mr-2">01.</span>
-            About Me
-          </h2>
-          <div className="section-divider w-32 md:w-64" />
-        </motion.div>
+        <SectionHeader 
+          number="01" 
+          title="About Me" 
+          isInView={isInView}
+        />
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Bio Text */}

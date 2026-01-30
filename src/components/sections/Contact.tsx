@@ -1,14 +1,8 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Mail, Github, Linkedin, Terminal, Database, ArrowUpRight } from 'lucide-react'
-
-const socialLinks = [
-  { icon: Mail, href: 'https://mail.google.com/mail/?view=cm&fs=1&to=sarker.samonwita@gmail.com', label: 'Email', username: 'sarker.samonwita' },
-  { icon: Github, href: 'https://github.com/SamisDone', label: 'GitHub', username: '@SamisDone' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/samonwita-sarker-a87737262/', label: 'LinkedIn', username: 'samonwita-sarker' },
-  { icon: Terminal, href: 'https://codeforces.com/profile/jinxed_sam', label: 'Codeforces', username: 'jinxed_sam' },
-  { icon: Database, href: 'https://www.kaggle.com/samonwitasarker', label: 'Kaggle', username: 'samonwitasarker' },
-]
+import { Mail, ArrowUpRight } from 'lucide-react'
+import { SectionHeader } from '../ui/SectionHeader'
+import { SOCIAL_LINKS, GMAIL_URL } from '@/lib/constants'
 
 export function Contact() {
   const ref = useRef<HTMLElement>(null)
@@ -38,22 +32,22 @@ export function Contact() {
           <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-primary">Available for new projects</span>
         </motion.div>
 
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+        <SectionHeader 
+          number="05" 
+          title="Get In Touch" 
+          dividerWidth="mx-auto"
+          className="text-center"
+          isInView={isInView}
+        />
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-12"
         >
-          <span className="text-muted-foreground font-mono text-xs uppercase tracking-[0.3em] block mb-4">05. What's Next?</span>
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">
-            Get In <span className="gradient-text-cyan">Touch</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            I'm currently looking for new opportunities and collaborations. 
-            Whether you have a question or just want to say hi, my inbox is always open!
-          </p>
-        </motion.div>
+          I'm currently looking for new opportunities and collaborations. 
+          Whether you have a question or just want to say hi, my inbox is always open!
+        </motion.p>
 
         {/* Email CTA */}
         <motion.div
@@ -63,7 +57,7 @@ export function Contact() {
           className="mb-24"
         >
           <motion.a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=sarker.samonwita@gmail.com"
+            href={GMAIL_URL}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -83,7 +77,7 @@ export function Contact() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 mt-8">
-            {socialLinks.map((link, index) => (
+            {SOCIAL_LINKS.map((link, index) => (
               <motion.a
                 key={link.label}
                 href={link.href}

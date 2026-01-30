@@ -1,6 +1,7 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { GraduationCap, Trophy, Users, Mic2, Target } from 'lucide-react'
+import { SectionHeader } from '../ui/SectionHeader'
 
 const education = [
   {
@@ -96,19 +97,11 @@ export function Experience() {
   return (
     <section id="experience" className="py-32 px-6 relative overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            <span className="text-primary font-mono text-xl md:text-2xl mr-2">04.</span>
-            Journey & Growth
-          </h2>
-          <div className="section-divider w-32 md:w-64" />
-        </motion.div>
+        <SectionHeader 
+          number="04" 
+          title="Journey & Growth" 
+          isInView={isInView}
+        />
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Education Timeline */}

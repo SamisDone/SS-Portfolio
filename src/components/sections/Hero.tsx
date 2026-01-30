@@ -1,13 +1,6 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Terminal, Database, Mail } from 'lucide-react'
-
-const socialLinks = [
-  { icon: Mail, href: 'https://mail.google.com/mail/?view=cm&fs=1&to=sarker.samonwita@gmail.com', label: 'Email' },
-  { icon: Github, href: 'https://github.com/SamisDone', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/samonwita-sarker-a87737262/', label: 'LinkedIn' },
-  { icon: Terminal, href: 'https://codeforces.com/profile/jinxed_sam', label: 'Codeforces' },
-  { icon: Database, href: 'https://www.kaggle.com/samonwitasarker', label: 'Kaggle' },
-]
+import { ArrowDown } from 'lucide-react'
+import { SOCIAL_LINKS, PERSONAL_INFO } from '@/lib/constants'
 
 export function Hero() {
   return (
@@ -83,7 +76,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex items-center justify-center gap-6 mb-16"
         >
-          {socialLinks.map((link, index) => (
+          {SOCIAL_LINKS.map((link, index) => (
             <motion.a
               key={link.label}
               href={link.href}
@@ -139,7 +132,7 @@ export function Hero() {
         className="absolute bottom-10 left-10 hidden md:block"
       >
         <div className="font-mono text-xs text-muted-foreground">
-          <span className="text-primary">location:</span> Chattogram, BD
+          <span className="text-primary">location:</span> {PERSONAL_INFO.location}
         </div>
       </motion.div>
 
