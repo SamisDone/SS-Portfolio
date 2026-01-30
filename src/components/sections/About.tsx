@@ -51,7 +51,7 @@ export function About() {
   const y = useTransform(scrollYProgress, [0, 1], [50, -50])
 
   return (
-    <section id="about" className="py-32 px-6 relative overflow-hidden" ref={ref}>
+    <section id="about" className="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
         <SectionHeader 
           number="01" 

@@ -126,7 +126,7 @@ export function Projects() {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100])
 
   return (
-    <section id="projects" className="py-32 px-6 relative" ref={ref}>
+    <section id="projects" className="py-16 md:py-32 px-4 md:px-6 relative" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
         <SectionHeader 
           number="02" 
@@ -137,7 +137,7 @@ export function Projects() {
         />
 
         {/* Projects Grid */}
-        <div className="space-y-32">
+        <div className="space-y-16 md:space-y-32">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}

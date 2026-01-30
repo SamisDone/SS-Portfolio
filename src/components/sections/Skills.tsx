@@ -80,7 +80,7 @@ export function Skills() {
   const y = useTransform(scrollYProgress, [0, 1], [60, -60])
 
   return (
-    <section id="skills" className="py-32 px-6 relative bg-muted/20 overflow-hidden" ref={ref}>
+    <section id="skills" className="py-16 md:py-32 px-4 md:px-6 relative bg-muted/20 overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div

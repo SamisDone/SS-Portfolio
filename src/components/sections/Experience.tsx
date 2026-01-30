@@ -95,7 +95,7 @@ export function Experience() {
   const y = useTransform(scrollYProgress, [0, 1], [70, -70])
 
   return (
-    <section id="experience" className="py-32 px-6 relative overflow-hidden" ref={ref}>
+    <section id="experience" className="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
         <SectionHeader 
           number="04" 

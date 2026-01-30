@@ -75,7 +75,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       initial="hidden"
       animate={isCardInView ? "visible" : "hidden"}
       variants={cardVariants}
-      className={`relative grid md:grid-cols-3 gap-8 p-8 border ${styles.border} ${styles.bg} backdrop-blur-sm rounded-sm overflow-hidden project-card mb-12 group`}
+      className={`relative grid md:grid-cols-3 gap-6 md:gap-8 p-4 sm:p-6 md:p-8 border ${styles.border} ${styles.bg} backdrop-blur-sm rounded-sm overflow-hidden project-card mb-8 md:mb-12 group`}
     >
       {/* Interactive Scanline Overlay (Only visible on hover) */}
       <motion.div 
@@ -101,7 +101,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           initial={{ opacity: 0, y: 10 }}
           animate={isCardInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: index * 0.1 + 0.4 }}
-          className="text-3xl font-bold tracking-tight"
+          className="text-2xl md:text-3xl font-bold tracking-tight"
         >
           {project.title}
         </motion.h3>
@@ -141,7 +141,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
 
       {/* Problem → Solution → Impact */}
       <div className="md:col-span-2 space-y-4 relative z-10">
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {[
             { label: 'Problem', text: project.problem, icon: '✗' },
             { label: 'Solution', text: project.solution, icon: '→' },
