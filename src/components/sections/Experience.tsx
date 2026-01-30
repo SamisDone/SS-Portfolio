@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { GraduationCap, Trophy, Users, Mic2, Target } from 'lucide-react'
+import { GraduationCap, Trophy, Users, Mic2 } from 'lucide-react'
 import { SectionHeader } from '../ui/SectionHeader'
 
 const education = [
@@ -48,14 +48,6 @@ const activities = [
     period: '2023 – Present',
     description: 'Parliamentary debates enhancing analytical thinking and logical reasoning. Clear communication of complex ideas.',
     accent: 'violet',
-  },
-  {
-    icon: Target,
-    title: 'Track & Field Athletics',
-    role: 'Competitive Athlete',
-    period: '2023 – Present',
-    description: 'Shot Put, Discus Throw, and Javelin Throw at inter-departmental level. Physical discipline and mental focus.',
-    accent: 'blood',
   },
 ]
 

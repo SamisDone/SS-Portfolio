@@ -76,8 +76,7 @@ export function About() {
               I approach every problem with the same question: <span className="text-foreground italic">"What's the most elegant solution?"</span>
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              When I'm not coding, you'll find me competing in MUN conferences, debating complex ideas, 
-              or pushing physical limits in track and field athletics.
+              When I'm not coding, you'll find me competing in MUN conferences or debating complex ideas.
             </p>
 
             {/* Quick Stats */}
