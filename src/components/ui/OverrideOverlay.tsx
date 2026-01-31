@@ -60,7 +60,7 @@ export function OverrideOverlay() {
             scale: [1, 1.05, 0.95, 1],
           }}
           transition={{ duration: 0.2, repeat: Infinity, repeatType: 'reverse', repeatDelay: 3 }}
-          className="text-primary font-mono text-sm tracking-[0.5em] mb-4 bg-primary/10 px-4 py-1 border border-primary/30 backdrop-blur-md"
+          className="text-primary font-mono text-sm tracking-[0.5em] mb-4 bg-primary/20 px-4 py-1 border border-primary/30"
         >
           {glitchText}
         </motion.div>

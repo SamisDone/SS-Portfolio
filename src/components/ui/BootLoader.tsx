@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { Terminal, TypingAnimation, AnimatedSpan } from './terminal'
 
 const BOOT_LOGS = [
   'INITIALIZING SST_OS v1.0.4...',
@@ -10,58 +11,48 @@ const BOOT_LOGS = [
 ]
 
 export function BootLoader({ onComplete }: { onComplete: () => void }) {
-  const [logs, setLogs] = useState<string[]>([])
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    let currentLogIndex = 0
-    const logInterval = setInterval(() => {
-      if (currentLogIndex < BOOT_LOGS.length) {
-        setLogs(prev => [...prev, BOOT_LOGS[currentLogIndex]])
-        currentLogIndex++
-      } else {
-        clearInterval(logInterval)
-        setTimeout(onComplete, 800)
-      }
-    }, 400)
-
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval)
+          setTimeout(onComplete, 1200) // Give terminal time to finish
           return 100
         }
         return prev + 1
       })
-    }, 20)
+    }, 45)
 
-    return () => {
-      clearInterval(logInterval)
-      clearInterval(progressInterval)
-    }
+    return () => clearInterval(progressInterval)
   }, [onComplete])
 
   return (
     <motion.div
-      exit={{ opacity: 0, scale: 1.1, filter: 'blur(20px)' }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      exit={{ opacity: 0, scale: 1.05 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed inset-0 z-[1000] bg-black flex items-center justify-center font-mono p-6"
     >
       <div className="w-full max-w-md">
-        {/* Logs */}
-        <div className="space-y-1 mb-8">
-          {logs.map((log, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              className={`text-xs ${i === BOOT_LOGS.length - 1 ? 'text-primary' : 'text-primary/60'}`}
-            >
-              <span className="mr-2">❯</span>
-              {log}
-            </motion.div>
-          ))}
-        </div>
+        {/* Terminal Logs */}
+        <Terminal className="mb-8 bg-transparent border-none shadow-none max-h-none h-auto overflow-visible p-0">
+          <TypingAnimation duration={20} className="text-primary/80">
+            {BOOT_LOGS[0]}
+          </TypingAnimation>
+          <AnimatedSpan delay={200} className="text-primary/60">
+            <span className="mr-2 text-primary">❯</span>{BOOT_LOGS[1]}
+          </AnimatedSpan>
+          <AnimatedSpan delay={400} className="text-primary/60">
+            <span className="mr-2 text-primary">❯</span>{BOOT_LOGS[2]}
+          </AnimatedSpan>
+          <AnimatedSpan delay={600} className="text-primary/60">
+            <span className="mr-2 text-primary">❯</span>{BOOT_LOGS[3]}
+          </AnimatedSpan>
+          <TypingAnimation duration={40} delay={1000} className="text-primary font-bold">
+            {BOOT_LOGS[4]}
+          </TypingAnimation>
+        </Terminal>
 
         {/* Progress Bar Container */}
         <div className="space-y-2">

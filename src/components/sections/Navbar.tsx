@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Terminal } from 'lucide-react'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { usePageTransition } from '@/components/ui/PageTransition'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
@@ -85,7 +85,16 @@ export function Navbar() {
               />
             </motion.a>
           ))}
-          <ThemeToggle />
+          <div className="flex items-center gap-4 border-l border-border pl-8">
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('open-terminal'))}
+              className="p-2 text-muted-foreground hover:text-primary transition-colors"
+              title="Open Terminal"
+            >
+              <Terminal size={20} />
+            </button>
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Active Section Indicator (Desktop) */}
@@ -95,12 +104,20 @@ export function Navbar() {
         />
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-foreground p-2"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('open-terminal'))}
+            className="p-2 text-primary"
+          >
+            <Terminal size={20} />
+          </button>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-foreground p-2"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -125,8 +142,8 @@ export function Navbar() {
               className={cn(
                 "font-mono text-sm transition-colors",
                 activeSection === item.id 
-                  ? "text-foreground" 
-                  : "text-muted-foreground hover:text-foreground"
+                ? "text-foreground" 
+                : "text-muted-foreground hover:text-foreground"
               )}
             >
               <span className={cn(

@@ -469,8 +469,7 @@
   --acid: 120 100% 45% !important;
   --violet: 120 100% 40% !important;
   animation: crt-flicker 0.15s infinite;
-  filter: sepia(0.5) hue-rotate(80deg) brightness(1.1) contrast(1.2);
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8), 2px 0 1px rgba(255, 0, 0, 0.5), -2px 0 1px rgba(0, 0, 255, 0.5);
+  text-shadow: 0 0 2px rgba(0, 255, 70, 0.4);
 }
 
 .matrix-theme * {

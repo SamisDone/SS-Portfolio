@@ -21,6 +21,14 @@ export function Footer() {
             transition={{ delay: 0.3 }}
             className="flex items-center gap-6 font-mono text-xs text-muted-foreground"
           >
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-terminal', { detail: { command: 'hint' } }))}
+              className="hover:text-primary transition-colors flex items-center gap-2"
+            >
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              SYSTEM_STATUS: OK
+            </button>
+            <span className="hidden sm:inline">•</span>
             <span>© 2025</span>
             <span className="hidden sm:inline">•</span>
             <span className="hidden sm:inline">Built with React & Framer Motion</span>

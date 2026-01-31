@@ -30,8 +30,14 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
       }
     }
     
+    const handleReset = () => setIsKonamiActive(false)
+    
     window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    window.addEventListener('reset-system', handleReset)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('reset-system', handleReset)
+    }
   }, [])
 
   return (
@@ -39,8 +45,7 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
       <motion.div 
         animate={shouldShake ? {
           x: [-10, 10, -10, 10, 0],
-          y: [-5, 5, -5, 5, 0],
-          filter: ['blur(0px)', 'blur(5px)', 'blur(0px)']
+          y: [-5, 5, -5, 5, 0]
         } : {}}
         transition={{ duration: 0.5 }}
         className={`min-h-screen bg-background text-foreground noise relative isolate transition-colors duration-1000 ${isKonamiActive ? 'matrix-theme' : ''}`}
