@@ -2,6 +2,7 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { GraduationCap, Trophy, Users, Mic2 } from 'lucide-react'
 import { SectionHeader } from '../ui/SectionHeader'
+import { accentText } from '@/lib/accent'
 
 const education = [
   {
@@ -30,15 +31,15 @@ const activities = [
     title: 'CUET Computer Club (CCC)',
     role: 'Member',
     period: '2023 – Present',
-    description: 'Intensive competitive programming sessions and technical workshops. Inter-university contests and complex problem solving.',
+    description: 'Competed in inter-university programming contests and collaborative algorithmic challenges. Actively contributed to organizing technical workshops, bootcamps, and intra-university events.',
     accent: 'cyan',
   },
   {
     icon: Mic2,
-    title: 'CUET Model United Nations',
+    title: 'CUET MUN Club',
     role: 'Joint Organizing Secretary',
     period: '2023 – Present',
-    description: 'Developed negotiation and public speaking skills. Drafted position papers on global technological policies.',
+    description: 'Directed organizational logistics for national conferences. Represented delegations in committee sessions, focusing on international technological governance and resolution drafting.',
     accent: 'acid',
   },
   {
@@ -46,7 +47,7 @@ const activities = [
     title: 'CUET Debating Society',
     role: 'Member',
     period: '2023 – Present',
-    description: 'Parliamentary debates enhancing analytical thinking and logical reasoning. Clear communication of complex ideas.',
+    description: 'Competed in inter-university parliamentary debates, developing high-level logical rebuttals and analytical thinking. Assisted in coordinating and hosting inter-departmental debate tournaments.',
     accent: 'violet',
   },
 ]
@@ -54,27 +55,12 @@ const activities = [
 const certifications = [
   { name: 'Data Science & Python Portfolio', issuer: 'DataCamp' },
   { name: 'Full Stack Development Profile', issuer: 'freeCodeCamp' },
-  { name: 'MatrixMUN Credential', issuer: 'Credsverse' },
   { name: 'Responsive Web Design', issuer: 'freeCodeCamp' },
+  { name: 'JavaScript Algorithms & Data Structures', issuer: 'freeCodeCamp' },
+  { name: 'MatrixMUN Credential', issuer: 'Credsverse' },
 ]
 
-const getAccentText = (accent: string) => {
-  switch (accent) {
-    case 'acid': return 'text-acid'
-    case 'violet': return 'text-violet'
-    case 'blood': return 'text-blood'
-    default: return 'text-cyan'
-  }
-}
-
-const getAccentBorder = (accent: string) => {
-  switch (accent) {
-    case 'acid': return 'border-l-acid'
-    case 'violet': return 'border-l-violet'
-    case 'blood': return 'border-l-blood'
-    default: return 'border-l-cyan'
-  }
-}
+const getAccentTextClass = (accent: string) => accentText[accent] || accentText.cyan
 
 export function Experience() {
   const ref = useRef<HTMLElement>(null)
@@ -91,7 +77,7 @@ export function Experience() {
     <section id="experience" className="py-12 md:py-24 px-4 md:px-6 relative overflow-hidden" ref={ref}>
       <motion.div style={{ y }} className="max-w-6xl mx-auto">
         <SectionHeader 
-          number="04" 
+          number="05" 
           title="Journey & Growth" 
           isInView={isInView}
         />
@@ -157,6 +143,22 @@ export function Experience() {
                   </motion.div>
                 ))}
               </div>
+              {/* View All Certifications */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 1 }}
+                className="mt-6"
+              >
+                <a
+                  href="https://drive.google.com/drive/folders/1ybnT2oynox40j0Shpx_cueBbHoDCKC4j?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-acid transition-colors"
+                >
+                  <span>View All Certifications →</span>
+                </a>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -168,7 +170,7 @@ export function Experience() {
           >
             <h3 className="text-xl font-semibold mb-8 flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                04b.
+                05b.
               </div>
               <span className="font-mono tracking-tight">Beyond the Labs</span>
             </h3>
@@ -182,16 +184,16 @@ export function Experience() {
                   className={`p-6 border border-border rounded-sm bg-card/30 hover:bg-card/50 transition-all relative overflow-hidden group`}
                 >
                    {/* Background Accent */}
-                   <div className={`absolute top-0 left-0 w-1 h-full ${getAccentText(activity.accent).replace('text-', 'bg-')} opacity-30 group-hover:opacity-100 transition-opacity`} />
+                   <div className={`absolute top-0 left-0 w-1 h-full ${getAccentTextClass(activity.accent).replace('text-', 'bg-')} opacity-30 group-hover:opacity-100 transition-opacity`} />
                    
                   <div className="flex items-start gap-5">
                     <div className={`p-2 rounded-sm bg-muted group-hover:shadow-[0_0_15px_rgba(var(--${activity.accent}),0.2)] transition-all`}>
-                      <activity.icon className={`w-6 h-6 ${getAccentText(activity.accent)}`} />
+                      <activity.icon className={`w-6 h-6 ${getAccentTextClass(activity.accent)}`} />
                     </div>
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
                         <h4 className="text-lg font-bold group-hover:text-primary transition-colors">{activity.title}</h4>
-                        <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border border-current ${getAccentText(activity.accent)}`}>{activity.role}</span>
+                        <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border border-current ${getAccentTextClass(activity.accent)}`}>{activity.role}</span>
                       </div>
                       <span className="text-xs text-muted-foreground font-mono uppercase tracking-widest">{activity.period}</span>
                       <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{activity.description}</p>

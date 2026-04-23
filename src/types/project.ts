@@ -3,7 +3,7 @@ export type AnimationType = 'elevate' | 'reveal' | 'unfold' | 'focus' | 'glide'
 export interface Project {
   title: string
   subtitle: string
-  type: 'Personal Project' | 'Group Project'
+  type: 'Personal Project' | 'Group Project' | 'Published Extension' | 'Freelance Project' | 'Hackathon'
   description: string
   problem: string
   solution: string

@@ -29,7 +29,7 @@ export function Footer() {
               SYSTEM_STATUS: OK
             </button>
             <span className="hidden sm:inline">•</span>
-            <span>© 2025</span>
+            <span>© 2026</span>
             <span className="hidden sm:inline">•</span>
             <span className="hidden sm:inline">Built with React & Framer Motion</span>
           </motion.div>

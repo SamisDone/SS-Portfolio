@@ -2,15 +2,14 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ExternalLink, Github, ArrowRight } from 'lucide-react'
 import { Project } from '@/types/project'
+import { accentText, accentBorder, accentBg } from '@/lib/accent'
 
-const getAccentStyles = (accent: string) => {
-  switch (accent) {
-    case 'acid': return { border: 'border-acid/30 hover:border-acid', text: 'text-acid', bg: 'bg-acid/10', glow: 'shadow-acid/20' }
-    case 'violet': return { border: 'border-violet/30 hover:border-violet', text: 'text-violet', bg: 'bg-violet/10', glow: 'shadow-violet/20' }
-    case 'blood': return { border: 'border-blood/30 hover:border-blood', text: 'text-blood', bg: 'bg-blood/10', glow: 'shadow-blood/20' }
-    default: return { border: 'border-cyan/30 hover:border-cyan', text: 'text-cyan', bg: 'bg-cyan/10', glow: 'shadow-cyan/20' }
-  }
-}
+const getAccentStyles = (accent: string) => ({
+  border: accentBorder[accent] || accentBorder.cyan,
+  text: accentText[accent] || accentText.cyan,
+  bg: accentBg[accent] || accentBg.cyan,
+  glow: `shadow-${accent}/20`,
+})
 
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -177,19 +176,21 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           animate={isCardInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: index * 0.1 + 0.9 }}
         >
-          <motion.a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ x: 4 }}
-            className={`group inline-flex items-center gap-2 font-mono text-sm ${styles.text} transition-colors`}
-          >
-            <Github className="w-4 h-4" />
-            <span className="relative">
-              Code
-              <span className={`absolute bottom-0 left-0 w-0 h-px ${styles.text.replace('text-', 'bg-')} group-hover:w-full transition-all duration-300`} />
-            </span>
-          </motion.a>
+          {project.github && (
+            <motion.a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ x: 4 }}
+              className={`group inline-flex items-center gap-2 font-mono text-sm ${styles.text} transition-colors`}
+            >
+              <Github className="w-4 h-4" />
+              <span className="relative">
+                Code
+                <span className={`absolute bottom-0 left-0 w-0 h-px ${styles.text.replace('text-', 'bg-')} group-hover:w-full transition-all duration-300`} />
+              </span>
+            </motion.a>
+          )}
 
           {project.live && (
             <motion.a

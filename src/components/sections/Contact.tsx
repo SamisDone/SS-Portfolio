@@ -33,7 +33,7 @@ export function Contact() {
         </motion.div>
 
         <SectionHeader 
-          number="05" 
+          number="06" 
           title="Get In Touch" 
           dividerWidth="mx-auto"
           className="text-center"

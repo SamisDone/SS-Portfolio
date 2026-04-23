@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
-import { SOCIAL_LINKS, PERSONAL_INFO } from '@/lib/constants'
+import { PERSONAL_INFO } from '@/lib/constants'
 
 export function Hero() {
   return (

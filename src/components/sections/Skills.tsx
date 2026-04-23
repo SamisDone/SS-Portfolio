@@ -1,5 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { accentBar, accentBorder } from '@/lib/accent'
 
 interface SkillCategory {
   title: string
@@ -12,10 +13,11 @@ const skillCategories: SkillCategory[] = [
     title: 'Languages',
     skills: [
       { name: 'C++', level: 90 },
-      { name: 'JavaScript', level: 88 },
+      { name: 'JavaScript (ES6+)', level: 88 },
       { name: 'Python', level: 80 },
       { name: 'Java', level: 75 },
       { name: 'C', level: 85 },
+      { name: 'SQL', level: 80 },
     ],
     accent: 'cyan',
   },
@@ -27,19 +29,33 @@ const skillCategories: SkillCategory[] = [
       { name: 'Next.js', level: 75 },
       { name: 'Tailwind CSS', level: 90 },
       { name: 'Express.js', level: 80 },
+      { name: 'Firebase', level: 78 },
+      { name: 'shadcn/ui', level: 75 },
     ],
     accent: 'acid',
+  },
+  {
+    title: 'AI & Machine Learning',
+    skills: [
+      { name: 'NLP', level: 78 },
+      { name: 'Multimodal Deep Learning', level: 75 },
+      { name: 'LLM Prompt Recovery', level: 72 },
+      { name: 'Gemini API', level: 80 },
+      { name: 'Explainable AI (XAI)', level: 70 },
+    ],
+    accent: 'violet',
   },
   {
     title: 'Databases & Tools',
     skills: [
       { name: 'PostgreSQL', level: 80 },
       { name: 'MongoDB', level: 78 },
-      { name: 'MySQL', level: 82 },
       { name: 'Git/GitHub', level: 90 },
       { name: 'Docker', level: 70 },
+      { name: 'Linux', level: 75 },
+      { name: 'LaTeX', level: 78 },
     ],
-    accent: 'violet',
+    accent: 'cyan',
   },
 ]
 
@@ -48,25 +64,13 @@ const coreSkills = [
   'Algorithms',
   'OOP',
   'DBMS',
+  'MVC Architecture',
   'Operating Systems',
   'System Design',
 ]
 
-const getAccentColor = (accent: string) => {
-  switch (accent) {
-    case 'acid': return 'bg-acid'
-    case 'violet': return 'bg-violet'
-    default: return 'bg-cyan'
-  }
-}
-
-const getAccentBorder = (accent: string) => {
-  switch (accent) {
-    case 'acid': return 'border-acid/30'
-    case 'violet': return 'border-violet/30'
-    default: return 'border-cyan/30'
-  }
-}
+const getBarColor = (accent: string) => accentBar[accent] || accentBar.cyan
+const getBorderColor = (accent: string) => (accentBorder[accent] || accentBorder.cyan).split(' ')[0]
 
 export function Skills() {
   const ref = useRef<HTMLElement>(null)
@@ -90,7 +94,7 @@ export function Skills() {
           className="mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            <span className="text-primary font-mono text-xl md:text-2xl mr-2">03.</span>
+            <span className="text-primary font-mono text-xl md:text-2xl mr-2">04.</span>
             Technical Arsenal
           </h2>
           <div className="section-divider w-32 md:w-64" />
@@ -121,14 +125,14 @@ export function Skills() {
         </motion.div>
 
         {/* Skill Categories */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + catIndex * 0.1 }}
-              className={`p-6 border rounded-sm bg-card/50 ${getAccentBorder(category.accent)}`}
+              className={`p-6 border rounded-sm bg-card/50 ${getBorderColor(category.accent)}`}
             >
               <h3 className="text-lg font-semibold mb-6 font-mono">{category.title}</h3>
               <div className="space-y-4">
@@ -145,7 +149,7 @@ export function Skills() {
                     </div>
                     <div className="h-1 bg-muted rounded-full overflow-hidden">
                       <motion.div
-                        className={`h-full ${getAccentColor(category.accent)}`}
+                        className={`h-full ${getBarColor(category.accent)}`}
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${skill.level}%` } : {}}
                         transition={{ duration: 1, delay: 0.6 + catIndex * 0.1 + skillIndex * 0.05, ease: 'easeOut' }}
@@ -168,19 +172,23 @@ export function Skills() {
           <h3 className="text-lg font-semibold mb-6 font-mono text-center">// Full Stack Overview</h3>
           <div className="flex flex-col items-center gap-2">
             <div className="px-6 py-2 bg-cyan/20 border border-cyan/30 rounded-sm font-mono text-sm text-cyan">
-              Frontend: React · Next.js · Tailwind
+              Frontend: React · Next.js · Tailwind · shadcn/ui
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="px-6 py-2 bg-acid/20 border border-acid/30 rounded-sm font-mono text-sm text-acid">
-              Backend: Node.js · Express · REST APIs
+              Backend: Node.js · Express · REST APIs · Firebase
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="px-6 py-2 bg-violet/20 border border-violet/30 rounded-sm font-mono text-sm text-violet">
-              Database: PostgreSQL · MongoDB · MySQL
+              AI/ML: NLP · Gemini API · Deep Learning · XAI
+            </div>
+            <div className="h-4 w-px bg-border" />
+            <div className="px-6 py-2 bg-cyan/20 border border-cyan/30 rounded-sm font-mono text-sm text-cyan">
+              Database: PostgreSQL · MongoDB
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="px-6 py-2 bg-muted border border-border rounded-sm font-mono text-sm text-muted-foreground">
-              DevOps: Git · Docker · Vercel
+              DevOps: Git · Docker · TanStack Router · LaTeX · Linux
             </div>
           </div>
         </motion.div>

@@ -2,7 +2,7 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { Code, Cpu, Layers, Brain } from 'lucide-react'
 import { SectionHeader } from '../ui/SectionHeader'
-import { GMAIL_URL } from '@/lib/constants'
+import { accentText, accentBorder } from '@/lib/accent'
 
 const identityBlocks = [
   {
@@ -20,7 +20,7 @@ const identityBlocks = [
   {
     icon: Brain,
     title: 'ML Enthusiast',
-    description: 'Exploring the frontiers of AI. Spatio-temporal modelling and predictive systems are my focus.',
+    description: 'Exploring the frontiers of AI. Explainable AI, NLP, and multimodal deep learning are my focus.',
     accent: 'cyan',
   },
   {
@@ -31,12 +31,10 @@ const identityBlocks = [
   },
 ]
 
-const getAccentColor = (accent: string) => {
-  switch (accent) {
-    case 'acid': return 'text-acid border-acid/30 hover:border-acid'
-    case 'violet': return 'text-violet border-violet/30 hover:border-violet'
-    default: return 'text-cyan border-cyan/30 hover:border-cyan'
-  }
+const getAccentClasses = (accent: string) => {
+  const text = accentText[accent] || accentText.cyan
+  const border = accentBorder[accent] || accentBorder.cyan
+  return `${text} ${border}`
 }
 
 export function About() {
@@ -69,14 +67,14 @@ export function About() {
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
               I'm a <span className="text-foreground font-medium">Computer Science & Engineering</span> student 
-              at <span className="text-primary">CUET</span>, obsessed with the intersection of <span className="text-foreground">software engineering</span> and <span className="text-primary font-medium">Machine Learning</span>.
+              at <span className="text-primary">CUET</span> with hands-on experience in full-stack web development using <span className="text-foreground">React, Node.js, and PostgreSQL</span>. Co-authored an <span className="text-primary font-medium">IEEE paper</span> on explainable AI and achieved <span className="text-primary font-medium">7th place internationally</span> in a shared task at <span className="text-foreground">ACL 2026</span>.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              From optimizing algorithms in competitive programming to architecting full-stack applications, 
+              Published <span className="text-foreground font-medium">two Chrome extensions</span> on the Web Store. From optimizing algorithms in competitive programming to architecting full-stack applications, 
               I approach every problem with the same question: <span className="text-foreground italic">"What's the most elegant solution?"</span>
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              When I'm not coding, you'll find me competing in MUN conferences or debating complex ideas.
+              Interested in <span className="text-foreground">Web Development</span>, <span className="text-primary">Deep Learning</span>, and <span className="text-foreground">Computer Vision</span>. When I'm not coding, you'll find me competing in MUN conferences or debating complex ideas.
             </p>
 
             {/* Quick Stats */}
@@ -96,18 +94,7 @@ export function About() {
               </div>
             </div>
 
-            {/* Certifications Link */}
-            <div className="pt-4">
-              <a 
-                href="https://www.datacamp.com/portfolio/Samonwita?view=true" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
-              >
-                <span>View Certifications (DataCamp)</span>
-                <span className="text-xs">→</span>
-              </a>
-            </div>
+
           </motion.div>
 
           {/* Identity Blocks */}
@@ -118,9 +105,9 @@ export function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className={`p-6 border rounded-sm bg-card/50 backdrop-blur-sm transition-all duration-300 interactive-card ${getAccentColor(block.accent)}`}
+                className={`p-6 border rounded-sm bg-card/50 backdrop-blur-sm transition-all duration-300 interactive-card ${getAccentClasses(block.accent)}`}
               >
-                <block.icon className={`w-8 h-8 mb-4 ${getAccentColor(block.accent).split(' ')[0]}`} />
+                <block.icon className={`w-8 h-8 mb-4 ${getAccentClasses(block.accent).split(' ')[0]}`} />
                 <h3 className="font-semibold text-lg mb-2">{block.title}</h3>
                 <p className="text-sm text-muted-foreground">{block.description}</p>
               </motion.div>
