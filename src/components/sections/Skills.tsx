@@ -13,8 +13,10 @@ const skillCategories: SkillCategory[] = [
     title: 'Languages',
     skills: [
       { name: 'C++', level: 90 },
+      { name: 'TypeScript', level: 86 },
       { name: 'JavaScript (ES6+)', level: 88 },
       { name: 'Python', level: 80 },
+      { name: 'PHP', level: 75 },
       { name: 'Java', level: 75 },
       { name: 'C', level: 85 },
       { name: 'SQL', level: 80 },
@@ -26,11 +28,13 @@ const skillCategories: SkillCategory[] = [
     skills: [
       { name: 'React.js', level: 88 },
       { name: 'Node.js', level: 82 },
-      { name: 'Next.js', level: 75 },
+      { name: 'Next.js', level: 78 },
       { name: 'Tailwind CSS', level: 90 },
+      { name: 'Zustand', level: 76 },
       { name: 'Express.js', level: 80 },
       { name: 'Firebase', level: 78 },
-      { name: 'shadcn/ui', level: 75 },
+      { name: 'Recharts', level: 74 },
+      { name: 'Radix UI', level: 75 },
     ],
     accent: 'acid',
   },
@@ -49,6 +53,7 @@ const skillCategories: SkillCategory[] = [
     title: 'Databases & Tools',
     skills: [
       { name: 'PostgreSQL', level: 80 },
+      { name: 'MySQL', level: 78 },
       { name: 'MongoDB', level: 78 },
       { name: 'Git/GitHub', level: 90 },
       { name: 'Docker', level: 70 },
@@ -172,11 +177,11 @@ export function Skills() {
           <h3 className="text-lg font-semibold mb-6 font-mono text-center">// Full Stack Overview</h3>
           <div className="flex flex-col items-center gap-2">
             <div className="px-6 py-2 bg-cyan/20 border border-cyan/30 rounded-sm font-mono text-sm text-cyan">
-              Frontend: React · Next.js · Tailwind · shadcn/ui
+              Frontend: React · Next.js · Tailwind · Zustand · Radix UI
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="px-6 py-2 bg-acid/20 border border-acid/30 rounded-sm font-mono text-sm text-acid">
-              Backend: Node.js · Express · REST APIs · Firebase
+              Backend: Node.js · Express · PHP · REST APIs · Firebase
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="px-6 py-2 bg-violet/20 border border-violet/30 rounded-sm font-mono text-sm text-violet">
@@ -184,11 +189,11 @@ export function Skills() {
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="px-6 py-2 bg-cyan/20 border border-cyan/30 rounded-sm font-mono text-sm text-cyan">
-              Database: PostgreSQL · MongoDB
+              Database: PostgreSQL · MySQL · MongoDB
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="px-6 py-2 bg-muted border border-border rounded-sm font-mono text-sm text-muted-foreground">
-              DevOps: Git · Docker · TanStack Router · LaTeX · Linux
+              DevOps: Git · Docker · Recharts · LaTeX · Linux
             </div>
           </div>
         </motion.div>
