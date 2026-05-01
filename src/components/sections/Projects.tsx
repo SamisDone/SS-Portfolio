@@ -128,7 +128,7 @@ const projects: Project[] = [
     animation: 'glide',
   },
   {
-    title: 'Finance Tracker',
+    title: 'FinPulse',
     subtitle: 'Personal Finance Manager',
     type: 'Personal Project',
     description: 'A comprehensive web application to manage personal finances, track income and expenses, set budgets, and achieve financial goals.',
@@ -137,7 +137,7 @@ const projects: Project[] = [
     impact: 'Provides multi-user financial record-keeping with categorized transactions, reminders, and clear visual reports.',
     tech: ['PHP', 'MySQL', 'JavaScript', 'Chart.js', 'HTML/CSS'],
     github: 'https://github.com/SamisDone/Finance-Tracker',
-    live: '',
+    live: 'http://finpulse.infinityfree.me/',
     accent: 'acid',
     featured: true,
     animation: 'elevate',

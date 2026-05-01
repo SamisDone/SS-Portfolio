@@ -52,7 +52,7 @@ export function TerminalOverlay() {
         setHistory(prev => [...prev, 'Samonwita Sarker: Full-Stack Developer, ML Enthusiast, and Competitive Programmer. Currently building systems that think.'])
         break
       case 'projects':
-        setHistory(prev => [...prev, 'Live Projects: TabSaver, ResumeForge, SortnPlay, PixelArt, GlitchBreach, Hangman, MediHub.'])
+        setHistory(prev => [...prev, 'Live Projects: TabSaver, ResumeForge, SortnPlay, PixelArt, GlitchBreach, Hangman, MediHub, FinPulse.'])
         break;
       case 'skills':
         setHistory(prev => [...prev, 'Frontend: React, Next.js, Tailwind, Framer Motion', 'Backend: Node.js, Express, PostgreSQL, Firebase', 'ML: Python, TensorFlow, PyTorch, OpenCV'])
