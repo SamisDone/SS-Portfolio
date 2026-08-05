@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { Menu, X, Terminal } from 'lucide-react'
+import { Menu, X, Terminal, FileDown } from 'lucide-react'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { usePageTransition } from '@/components/ui/PageTransition'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
@@ -87,9 +87,20 @@ export function Navbar() {
             </motion.a>
           ))}
           <div className="flex items-center gap-4 border-l border-border pl-8">
+            <a
+              href="/Samonwita_Sarker_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Download CV"
+              title="Download CV"
+            >
+              <FileDown size={20} />
+            </a>
             <button
               onClick={() => window.dispatchEvent(new CustomEvent('open-terminal'))}
               className="p-2 text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Open terminal"
               title="Open Terminal"
             >
               <Terminal size={20} />
@@ -109,12 +120,14 @@ export function Navbar() {
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('open-terminal'))}
             className="p-2 text-primary"
+            aria-label="Open terminal"
           >
             <Terminal size={20} />
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-foreground p-2"
+            aria-label="Toggle navigation menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowDown } from 'lucide-react'
+import { ArrowDown, FileDown } from 'lucide-react'
 import { PERSONAL_INFO } from '@/lib/constants'
 
 export function Hero() {
@@ -25,6 +25,9 @@ export function Hero() {
                 src="/profile.png" 
                 alt="Samonwita Sarker" 
                 className="w-full h-full object-cover"
+                loading="eager"
+                width={160}
+                height={160}
               />
             </div>
             {/* Decorative ring */}
@@ -87,10 +90,33 @@ export function Hero() {
             >
               View My Work
             </motion.a>
+            <div className="flex items-center gap-2">
+              <motion.a
+                href="/Samonwita_Sarker_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-primary text-primary font-semibold rounded-sm hover:bg-primary/10 transition-colors magnetic-btn"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <FileDown className="w-5 h-5" />
+                Download CV
+              </motion.a>
+              <a
+                href="/Samonwita_Sarker_CV.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-4 text-xs font-mono text-muted-foreground hover:text-primary transition-colors"
+                title="View Markdown version"
+              >
+                .md
+              </a>
+            </div>
           </div>
 
           <motion.a
             href="#about"
+            aria-label="Scroll to about section"
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
             className="text-muted-foreground hover:text-foreground transition-colors mt-8 inline-block"

@@ -11,6 +11,12 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    cursor: auto !important;
+  }
+}
+
 @layer base {
   :root {
     /* Deep charcoal / near-black base */
@@ -63,15 +69,6 @@
     /* Typography */
     --font-display: "Space Grotesk", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
-
-    --sidebar-background: 240 10% 4%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 168 100% 48%;
-    --sidebar-primary-foreground: 240 10% 4%;
-    --sidebar-accent: 240 6% 12%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 240 6% 18%;
-    --sidebar-ring: 168 100% 48%;
   }
 
   /* Light Theme */
@@ -120,15 +117,6 @@
     --glow-cyan: 0 0 20px hsl(168 85% 35% / 0.25);
     --glow-acid: 0 0 20px hsl(73 80% 40% / 0.25);
     --glow-violet: 0 0 20px hsl(280 80% 50% / 0.25);
-
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 240 10% 10%;
-    --sidebar-primary: 168 85% 35%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 5% 92%;
-    --sidebar-accent-foreground: 240 10% 10%;
-    --sidebar-border: 240 5% 85%;
-    --sidebar-ring: 168 85% 35%;
   }
 }
 
