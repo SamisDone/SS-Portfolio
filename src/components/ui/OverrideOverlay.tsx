@@ -21,28 +21,21 @@ export function OverrideOverlay() {
   }, [])
 
   return (
-    <div className="fixed inset-0 z-[80] pointer-events-none overflow-hidden select-none">
+    <div className="fixed inset-0 z-[80] pointer-events-none overflow-hidden select-none" aria-hidden="true">
       {/* Full Screen Matrix Rain */}
-      <div className="absolute inset-0 opacity-[0.15] flex justify-around whitespace-nowrap orientation-vertical leading-none pointer-events-none">
-        {Array.from({ length: 40 }).map((_, i) => (
-          <motion.div
+      {/* Performant Matrix Rain */}
+      <div className="absolute inset-0 opacity-[0.15] flex justify-around whitespace-nowrap overflow-hidden pointer-events-none">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div
             key={i}
-            initial={{ y: '-100%' }}
-            animate={{ y: '100%' }}
-            transition={{
-              duration: Math.random() * 10 + 5,
-              repeat: Infinity,
-              ease: 'linear',
-              delay: Math.random() * 5,
+            className="text-[10px] font-mono text-primary animate-matrix-rain"
+            style={{
+              animationDuration: `${8 + i * 1.5}s`,
+              animationDelay: `${i * 0.7}s`,
             }}
-            className="text-[10px] font-mono text-primary flex flex-col items-center"
           >
-            {Array.from({ length: 50 }).map((_, j) => (
-              <span key={j} className="my-1">
-                {Math.random() > 0.5 ? '1' : '0'}
-              </span>
-            ))}
-          </motion.div>
+            {'01'.repeat(80)}
+          </div>
         ))}
       </div>
 

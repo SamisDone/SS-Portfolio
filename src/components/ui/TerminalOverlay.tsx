@@ -8,6 +8,7 @@ const COMMANDS = {
   whoami: 'Professional identity check',
   projects: 'List significant engineering works',
   skills: 'Technical stack traversal',
+  cv: 'Download curriculum vitae',
   hint: 'Unlock hidden potentials',
   reset: 'Deactivate override protocols',
   clear: 'Sanitize terminal buffer',
@@ -15,7 +16,7 @@ const COMMANDS = {
 }
 
 const CATEGORIES = {
-  CORE: ['whoami', 'projects', 'skills'],
+  CORE: ['whoami', 'projects', 'skills', 'cv'],
   SYSTEM: ['help', 'clear', 'exit'],
   SECRET: ['hint', 'reset']
 }
@@ -41,11 +42,11 @@ export function TerminalOverlay() {
         setHistory(prev => [
           ...prev, 
           '--- SYSTEM CAPABILITIES ---',
-          ...CATEGORIES.CORE.map(k => `${k.padEnd(12)} - ${(COMMANDS as any)[k]}`),
-          ...CATEGORIES.SYSTEM.map(k => `${k.padEnd(12)} - ${(COMMANDS as any)[k]}`),
+          ...CATEGORIES.CORE.map(k => `${k.padEnd(12)} - ${COMMANDS[k as keyof typeof COMMANDS]}`),
+          ...CATEGORIES.SYSTEM.map(k => `${k.padEnd(12)} - ${COMMANDS[k as keyof typeof COMMANDS]}`),
           '',
           '--- RESTRICTED PROTOCOLS ---',
-          ...CATEGORIES.SECRET.map(k => `!! ${k.padEnd(9)} - ${(COMMANDS as any)[k]}`)
+          ...CATEGORIES.SECRET.map(k => `!! ${k.padEnd(9)} - ${COMMANDS[k as keyof typeof COMMANDS]}`)
         ])
         break
       case 'whoami':
@@ -56,6 +57,10 @@ export function TerminalOverlay() {
         break;
       case 'skills':
         setHistory(prev => [...prev, 'Frontend: React, Next.js, Tailwind, Framer Motion', 'Backend: Node.js, Express, PostgreSQL, Firebase', 'ML: Python, TensorFlow, PyTorch, OpenCV'])
+        break
+      case 'cv':
+        setHistory(prev => [...prev, '--- CURRICULUM VITAE ---', 'PDF: /Samonwita_Sarker_CV.pdf', 'Markdown: /Samonwita_Sarker_CV.md', '', 'Opening PDF in new tab...'])
+        window.open('/Samonwita_Sarker_CV.pdf', '_blank')
         break
       case 'hint':
         setShowKonamiHint(true)
@@ -80,24 +85,26 @@ export function TerminalOverlay() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === '`') {
+        const tag = (e.target as HTMLElement).tagName
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return
         e.preventDefault()
         setIsOpen(prev => !prev)
       }
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         setIsOpen(false)
       }
     }
-    const handleOpen = (e: any) => {
+    const handleOpen = (e: CustomEvent<{ command?: string }>) => {
       setIsOpen(true)
       if (e.detail?.command) {
         handleCommand(e.detail.command)
       }
     }
     window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('open-terminal' as any, handleOpen)
+    window.addEventListener('open-terminal', handleOpen as EventListener)
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('open-terminal' as any, handleOpen)
+      window.removeEventListener('open-terminal', handleOpen as EventListener)
     }
   }, [])
 

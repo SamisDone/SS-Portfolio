@@ -19,7 +19,8 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
     const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
     
     const handleKeyDown = (e: KeyboardEvent) => {
-      keys.push(e.key)
+      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key
+      keys.push(key)
       keys = keys.slice(-10)
       if (keys.join(',') === konami.join(',')) {
         setShouldShake(true)

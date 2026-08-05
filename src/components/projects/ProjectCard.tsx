@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, Variants } from 'framer-motion'
 import { useRef } from 'react'
 import { ExternalLink, Github, ArrowRight } from 'lucide-react'
 import { Project } from '@/types/project'
@@ -19,7 +19,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   const styles = getAccentStyles(project.accent)
 
   // Premium Motion Suite Variants
-  const animations: Record<string, any> = {
+  const animations: Record<string, Variants> = {
     elevate: {
       hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
       visible: { 
@@ -66,7 +66,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
     }
   }
 
-  const cardVariants: any = animations[project.animation] || animations.elevate
+  const cardVariants: Variants = animations[project.animation] || animations.elevate
 
   return (
     <motion.div

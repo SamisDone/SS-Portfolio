@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Terminal, TypingAnimation, AnimatedSpan } from './terminal'
 
@@ -12,20 +12,24 @@ const BOOT_LOGS = [
 
 export function BootLoader({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0)
+  const completionTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval)
-          setTimeout(onComplete, 1200) // Give terminal time to finish
+          completionTimer.current = setTimeout(onComplete, 1200) // Give terminal time to finish
           return 100
         }
         return prev + 1
       })
     }, 45)
 
-    return () => clearInterval(progressInterval)
+    return () => {
+      clearInterval(progressInterval)
+      if (completionTimer.current) clearTimeout(completionTimer.current)
+    }
   }, [onComplete])
 
   return (
@@ -71,7 +75,7 @@ export function BootLoader({ onComplete }: { onComplete: () => void }) {
         </div>
 
         {/* Matrix Rain Decoration (Subtle) */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03] overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] overflow-hidden" aria-hidden="true">
              <div className="flex justify-around w-full h-full text-[10px] whitespace-nowrap orientation-vertical leading-none animate-matrix-rain">
                 {Array.from({ length: 20 }).map((_, i) => (
                     <div key={i}>0110101101010110110101010110101010101101010101</div>

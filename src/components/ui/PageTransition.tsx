@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect, createContext, useContext, useCallback } from 'react'
+import { useState, useEffect, createContext, useContext, useCallback, useMemo } from 'react'
 
 interface TransitionContextType {
   triggerTransition: (targetId: string) => void
@@ -45,8 +45,10 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
     }
   }, [isTransitioning, targetSection])
 
+  const contextValue = useMemo(() => ({ triggerTransition, isTransitioning }), [triggerTransition, isTransitioning])
+
   return (
-    <TransitionContext.Provider value={{ triggerTransition, isTransitioning }}>
+    <TransitionContext.Provider value={contextValue}>
       {children}
       <TransitionOverlay isActive={isTransitioning} />
     </TransitionContext.Provider>
