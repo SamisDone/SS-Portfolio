@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'next-themes'
 import { RootLayout } from './components/layout/RootLayout'
 import { HomePage } from './pages/HomePage'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <RootLayout>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </RootLayout>
       </BrowserRouter>
@@ -18,4 +20,3 @@ function App() {
 }
 
 export default App
-

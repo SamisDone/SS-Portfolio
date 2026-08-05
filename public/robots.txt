@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://samonwitaportfolio.netlify.app/sitemap.xml
