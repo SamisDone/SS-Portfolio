@@ -4,50 +4,8 @@ import { FileText, Trophy, Award, ExternalLink } from 'lucide-react'
 import { SectionHeader } from '../ui/SectionHeader'
 import { accentText, accentBorder, accentBg } from '@/lib/accent'
 
-interface Publication {
-  title: string
-  authors: string
-  venue: string
-  year: string
-  doi?: string
-  icon: typeof FileText
-  accent: 'cyan' | 'acid' | 'violet'
-  highlight?: string
-  description?: string
-  status?: string
-}
-
-const publications: Publication[] = [
-  {
-    title: 'A Machine Learning and Explainable AI-Based Multiclass Police Fraud Prediction Scheme with SHAP Based Interpretability',
-    authors: 'M. Chowdhury, J. Islam, Md. A. I. Semon, S. Sarker, M. M. Barua, A. Akter',
-    venue: '2026 5th International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE), IEEE',
-    year: '2026',
-    doi: 'https://ieeexplore.ieee.org/document/11429440',
-    icon: FileText,
-    accent: 'cyan',
-  },
-  {
-    title: '7th Rank — DravidianLangTech @ ACL 2026 Shared Task',
-    authors: '',
-    venue: 'ACL 2026 — Association for Computational Linguistics',
-    year: 'Feb 2026',
-    icon: Trophy,
-    accent: 'acid',
-    highlight: '7th Place Internationally',
-    description: 'Developed a multimodal Deep Learning approach for Telugu Language LLM Prompt Recovery. Engineered a style-recovery mechanism to accurately restore linguistic nuances in machine-generated text.',
-    status: 'Paper under review at a Tier-1 NLP conference',
-  },
-  {
-    title: 'Finalist — PoliMemeDecode Datathon (CUET CSE FEST 2025)',
-    authors: '',
-    venue: 'CUET CSE FEST 2025',
-    year: 'Dec 2025',
-    icon: Award,
-    accent: 'violet',
-    description: 'Designed an advanced classification system for multimodal political memes. Optimized detection accuracy through effective feature fusion of visual and textual data streams.',
-  },
-]
+import { publications } from '@/data/research'
+import type { Publication } from '@/data/research'
 
 const getAccent = (accent: string) => ({
   text: accentText[accent] || accentText.cyan,
@@ -115,12 +73,12 @@ export function Research() {
 
                   {pub.authors && (
                     <p className="text-sm text-muted-foreground mb-2 font-mono">
-                      {pub.authors.split('S. Sarker').map((part, i, arr) => (
+                      {pub.authorHighlight ? pub.authors.split(pub.authorHighlight).map((part, i, arr) => (
                         <span key={i}>
                           {part}
-                          {i < arr.length - 1 && <span className="text-primary font-semibold">S. Sarker</span>}
+                          {i < arr.length - 1 && <span className="text-primary font-semibold">{pub.authorHighlight}</span>}
                         </span>
-                      ))}
+                      )) : pub.authors}
                     </p>
                   )}
 
@@ -148,7 +106,7 @@ export function Research() {
                       className={`inline-flex items-center gap-2 text-sm font-mono ${accent.text} hover:underline mt-2`}
                     >
                       <ExternalLink className="w-3 h-3" />
-                      <span>View on IEEE Xplore</span>
+                      <span>{pub.linkLabel || 'View Publication'}</span>
                     </a>
                   )}
                 </div>
